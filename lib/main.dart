@@ -33,6 +33,31 @@ class _BookFirebaseDemoStateState extends State<BookFirebaseDemoState> {
   TextEditingController bookNameController = TextEditingController();
   TextEditingController bookAuthorController = TextEditingController();
 
+  bool isEditing = false;
+  bool textFieldVisibility = false;
+
+  String firestoreCollectionName = "Books";
+  Book? currentBook;
+
+  Stream<QuerySnapshot> getAllBooks() {
+    return FirebaseFirestore.instance.collection(firestoreCollectionName).snapshots();
+  }
+
+  Future<void> addBook() async {
+
+    
+    Book book = Book(bookName: bookNameController.text, authorName: bookAuthorController.text);
+
+    try{
+      await FirebaseFirestore.instance
+          .collection(firestoreCollectionName)
+          .doc()
+          .set(book.toJson());
+    }
+    catch(e){
+      print(e.toString());
+    }
+  }
 
 
 
