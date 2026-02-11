@@ -194,6 +194,29 @@ void setUpdateUI(Book book) {
     });
 }
 
+Widget button(){
+
+  return SizedBox(
+    width: double.infinity,
+    child: OutlinedButton(
+      onPressed: () {
+        if(isEditing == true){
+          updateIfEditing();
+        }
+        else{
+          addBook();
+        }
+
+        setState(() {
+          textFieldVisibility = false;
+        });
+        
+      },
+      child: Text(isEditing ? 'Update Book' : 'Add Book'),
+    ),
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
