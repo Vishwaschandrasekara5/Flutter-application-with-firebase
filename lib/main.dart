@@ -139,32 +139,60 @@ Widget buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
   Widget listItemBuild(BuildContext context, DocumentSnapshot data) {
     final book = Book.fromSnapshot(data);
 
-    return ListTile(
-      title: Text(book.bookName ?? 'No Title'),
-      subtitle: Text(book.authorName ?? 'No Author'),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () {
-              setState(() {
-                isEditing = true;
-                textFieldVisibility = true;
-                currentBook = book;
-                bookNameController.text = book.bookName ?? '';
-                bookAuthorController.text = book.authorName ?? '';
-              });
-            },
+    return Padding(
+      key: ValueKey(book.bookName),
+      padding: EdgeInsets.symmetric(vertical: 19, horizontal: 1),
+      child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.blueAccent),
+            borderRadius: BorderRadius.circular(4),
           ),
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () => deleteBook(book),
-          ),
-        ],
+          child: SingleChildScrollView(
+            child: ListTile(
+              title: Column(
+                children: <Widget>[
+                  Row(
+                    children:<Widget>[
+                      Icon(Icons.book, color: Colors.blueAccent),
+                      Text(book.bookName ?? 'Unknown Book')
+                    ]
+                  ),
+                  Divider(),
+                  Row(
+                    children:<Widget>[
+                      Icon(Icons.person, color: Colors.blueAccent),
+                      Text(book.authorName ?? 'Unknown Author')
+                    ]
+                  ),
+                ],
+              ),
+              trailing: IconButton(
+                icon: Icon (Icons.delete, color: Colors.redAccent),
+                onPressed: (){
+                  deleteBook(book);
+                },
+
+            ),
+            onTap: (){
+              setUpdateUI(book);
+            }
+          )
       ),
+    ),
     );
   }
+
+
+void setUpdateUI(Book book) {
+    bookNameController.text = book.bookName ?? '';
+    bookAuthorController.text = book.authorName ?? '';
+
+    setState(() {
+      isEditing = true;
+      textFieldVisibility = true;
+      currentBook = book;
+    });
+}
 
   @override
   Widget build(BuildContext context) {
