@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Book {
   final String? bookName;
   final String? authorName;
-
   final DocumentReference? documentReference;
 
   Book({this.bookName, this.authorName, this.documentReference});
@@ -20,7 +19,6 @@ class Book {
     return {
       'bookName': bookName,
       'authorName': authorName,
-      'documentReference': documentReference,
     };
   }
 }
