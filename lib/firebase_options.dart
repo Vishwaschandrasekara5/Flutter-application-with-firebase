@@ -49,11 +49,11 @@ class DefaultFirebaseOptions {
   // FOR ANDROID CONFIGURATION
   // Get these from: Firebase Console → Project Settings → Your apps → Android app
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: 'YOUR_ANDROID_APP_ID',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_PROJECT_ID.appspot.com',
+    apiKey: 'AIzaSyAGQ2EVMdFEbqZ4EfgyKJN2oNaRpMwEk-c',
+    appId: '1:650938348582:android:67e4e82d64931e01afe2e7',
+    messagingSenderId: '650938348582',
+    projectId: 'flutterdemo-33ed5',
+    storageBucket: 'flutterdemo-33ed5.firebasestorage.app',
   );
 
   // FOR IOS CONFIGURATION

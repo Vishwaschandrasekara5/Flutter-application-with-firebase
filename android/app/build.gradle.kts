@@ -44,4 +44,7 @@ dependencies {
 
     // Firebase Analytics (example service)
     implementation("com.google.firebase:firebase-analytics")
+
+    // Cloud Firestore
+    implementation("com.google.firebase:firebase-firestore")
 }
